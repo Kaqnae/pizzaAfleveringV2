@@ -14,21 +14,25 @@ public class Main {
         //Array with topping prices
         int[] toppingPrices = {15, 10, 5};
 
+        //Variable for the total price of all pizzas ordered
         double totalPrice = 0;
+        //Variable for the pizza that is currently being ordered
         double currentPizzaPrice = 0;
-
+        //Booleans for the size and toppings loop, in order to make them finish
         boolean sizeDone = true;
         boolean toppingsDone = true;
-
-        int amountOfPizzasChosen = 0;
+        //Variable for the amount of pizzas that have been ordered
+        int amountOfPizzasOrdered = 0;
 
         //While loop that runs while true
         do {
             //Sets the variable to 0 every time it loops
             currentPizzaPrice = 0;
+            //Sets the booleans to be true, in order for the loops to be able to run again
             sizeDone = true;
             toppingsDone = true;
-            System.out.println("What pizza would you like to order?");
+
+            System.out.println("\nWhat pizza would you like to order?");
             System.out.println("0. Exit");
             //Displays a list of the pizzas including price
             for (int i = 0; i < pizzas.length; i++) {
@@ -48,18 +52,20 @@ public class Main {
                 //Continue skips the current iteration and goes back
                 continue;
             } else {
-                System.out.println("You selected " + pizzas[pizzaChoice - 1] + " - DKK " + pizzaPrices[pizzaChoice - 1]);
+                //Prints out the selected pizza including the price
+                System.out.println("\nYou selected " + pizzas[pizzaChoice - 1] + " - DKK " + pizzaPrices[pizzaChoice - 1]);
                 currentPizzaPrice += pizzaPrices[pizzaChoice - 1];
-                amountOfPizzasChosen++;
+                //Adds one pizza to the total amount of pizzas being ordered
+                amountOfPizzasOrdered++;
             }
-
+            //While loops that makes sure that it stays on toppings until a valid option is given
             while (toppingsDone){
-                System.out.println("What toppings do you want?");
+                System.out.println("\nWhat toppings do you want?");
                 System.out.println("0. No toppings");
 
                 //Prints out list of toppings with their corresponding price
                 for (int i = 0; i < toppings.length; i++) {
-                    System.out.println((i + 1) + ". " + toppings[i] + " - DKK" + toppingPrices[i]);
+                    System.out.println((i + 1) + ". " + toppings[i] + " - DKK " + toppingPrices[i]);
                 }
 
                 System.out.println("Please select a topping (1-3, 0 for no toppings): ");
@@ -76,22 +82,23 @@ public class Main {
                     System.out.println("Invalid option. Please selected a valid option");
 
                 } else {
-                    System.out.println("You selected " + toppings[toppingChoice - 1] + toppingPrices[toppingChoice - 1]);
+                    System.out.println("\nYou selected " + toppings[toppingChoice - 1] + " - " + toppingPrices[toppingChoice - 1] + " DKK");
                     currentPizzaPrice += toppingPrices[toppingChoice - 1];
                     toppingsDone = false;
                 }
 
             }
-
+            //While loop that makes sure that it stays on sizes until a valid option is given
             while(sizeDone){
                 //Prints out the different sizes of pizzas
-                System.out.println("What size pizza do you want?");
+                System.out.println("\nWhat size pizza do you want?");
                 for (int i = 0; i < pizzaSize.length; i++) {
                     System.out.println((i + 1) + ". " + pizzaSize[i]);
                 }
 
                 int sizeChoice = userInput();
 
+                //If statements that makes sure that valid options is being given
                 if (sizeChoice == 0) {
                     System.out.println("Please input a valid option");
                     //Continue skips the current iteration, and goes back
@@ -102,18 +109,19 @@ public class Main {
                 } else {
                     //Calculates the correct price of the pizza, when the size is chosen
                     currentPizzaPrice *= pizzaSize[sizeChoice - 1];
+                    //Sets the boolean sizeDone to false, in order to get out of the while loop
                     sizeDone = false;
                 }
-
-                System.out.println("The price of the pizza is: " + currentPizzaPrice);
+                //Displays the current price for the pizza that has been chosen
+                System.out.println("\nThe price of the pizza is: " + currentPizzaPrice);
             }
-            //Adds the current pizza price to the variable totalPrice
+            //Adds the current pizza price to the variable totalPrice, inorder to be able to calculate a total
             totalPrice += currentPizzaPrice;
 
         } while (true);
-
-        System.out.println("Total price is: " + totalPrice + " DKK " + "\nYou've ordered: " + amountOfPizzasChosen + " pizzas");
-        System.out.println("Thank you for ordering!");
+        //Displays the total price for the order and the amount of pizzas that have been ordered
+        System.out.println("\nTotal price is: " + totalPrice + " DKK " + "\nYou've ordered: " + amountOfPizzasOrdered + " pizza(s)");
+        System.out.println("\nThank you for ordering!");
     }
 
     //Method with a scanner, that validates a users input
