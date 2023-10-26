@@ -47,14 +47,11 @@ public class Main {
                 System.out.println("Invalid choice. Please select a valid option");
                 //Continue skips the current iteration and goes back
                 continue;
-
             } else {
                 System.out.println("You selected " + pizzas[pizzaChoice - 1] + " - DKK " + pizzaPrices[pizzaChoice - 1]);
                 currentPizzaPrice += pizzaPrices[pizzaChoice - 1];
                 amountOfPizzasChosen++;
             }
-
-
 
             while (toppingsDone){
                 System.out.println("What toppings do you want?");
@@ -107,10 +104,6 @@ public class Main {
                     currentPizzaPrice *= pizzaSize[sizeChoice - 1];
                     sizeDone = false;
                 }
-
-
-                //Assigning the total price for the pizza with the topping price included
-
 
                 System.out.println("The price of the pizza is: " + currentPizzaPrice);
             }
