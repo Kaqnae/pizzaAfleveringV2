@@ -1,3 +1,7 @@
+//Noah B. Hvidt-Pedersen
+
+//Tested by Alexander Jacob Gerckens
+
 import java.util.Scanner;
 
 public class Main {
